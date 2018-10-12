@@ -109,8 +109,6 @@ echo ----------------
 echo --- Pushing ---
 echo ----------------
 ${GIT_BIN} push \
-   --tags \
-   --follow-tags \
    --signed=false \
    --set-upstream \
    --verbose \
