@@ -70,7 +70,7 @@ export SPRINT_DIRECTORY=`dirname ${SPRINT_SCRIPT}`
 export SPRINT_T0=`date --universal`
 PYTHON=`which python`
 if [ "${?}" -eq "0" ]; then
-export SPRINT_VERSION=`${PYTHON} setup.py --version`
+export SPRINT_VERSION=`${PYTHON} ${SPRINT_DIRECTORY}/setup.py --version`
 else
 export SPRINT_VERSION=UNKNOWN
 fi
