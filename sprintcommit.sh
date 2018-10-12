@@ -35,22 +35,33 @@
 #SOFTWARE.
 
 ### Variables
+##
 COMMIT_TIME=${1:-0}
-DEBUG=${DEBUG:-0}
+
 ## Configurable Variables
 # Binary to use for git.
 #  Use 'echo git' to debug.
+#  Example usage:
 #     export GIT_BIN=`echo git'
 #     setenv GIT_BIN 'echo git'
+#     DEBUG=0 GIT_BIN='echo git' ./sprintcommit.sh
 GIT_BIN=${GIT_BIN:-git}
 
 # Print off variables and exit.
+# If DEBUG is not 0, print off variables and exit.
+#  Example usage:
+#     export DEBUG=1
+#     setenv DEBUG 1
+#     DEBUG=1 ./sprintcommit.sh
 DEBUG=${DEBUG:-0}
 
 # Files to add to git during development.
-#
-#
-#
+# Before commiting
+#  Example usage:
+#     export ADD_PATHSPEC='*.py *.ipynb'
+#     setenv ADD_PATHSPEC '*.py *.ipynb'
+#     ADD_PATHSPEC='*.py *.ipynb' DEBUG=0 GIT_BIN='echo git' ./sprintcommit.sh
+#     ADD_PATHSPEC='*.sh' DEBUG=0 GIT_BIN='echo git' ./sprintcommit.sh
 ADD_PATHSPEC=${ADD_PATHSPEC:-}
 
 ## Ground Truth Variables
@@ -72,18 +83,19 @@ if [ "${DEBUG}" -ne "0" ]; then
 # Print off all of the variables.
 echo \${SPRINT_SCRIPT}=${SPRINT_SCRIPT}
 echo \${SPRINT_DIRECTORY}=${SPRINT_DIRECTORY}
+echo \${SPRINT_T0}=${SPRINT_T0}
 echo \${SPRINT_VERSION}=${SPRINT_VERSION}
 echo \$COMMIT_TIME=${COMMIT_TIME}
 echo \$ADD_PATHSPEC=${ADD_PATHSPEC}
 echo \$GIT_BIN=${GIT_BIN}
 echo \$DEBUG=${DEBUG}
-
 exit 0
 fi
 # The boring stuff of git, automated.
 while [ 1 ];
 do
 # Fetch.
+echo
 echo ----------------
 echo --- Fetching ---
 echo ----------------
@@ -144,8 +156,7 @@ if [ "${COMMIT_TIME}" == "0" ]; then
    exit 0
 fi
 
-
-# Sleep.
+# Sleep for given time.
 echo
 echo --- Sleeping until `date -d "+${COMMIT_TIME} second"` ---
 echo ---------------------------------------------------------
