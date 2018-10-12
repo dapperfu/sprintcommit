@@ -35,10 +35,13 @@
 #SOFTWARE.
 
 ### Variables
-## Configurable Variables
 COMMIT_TIME=${1:-0}
+DEBUG=${DEBUG:-0}
+## Configurable Variables
 # Binary to use for git.
-#  Use 'echo' to debug.
+#  Use 'echo git' to debug.
+#     export GIT_BIN=`echo git'
+#
 GIT_BIN=${GIT_BIN:-git}
 # Print off variables and exit.
 DEBUG=${DEBUG:-0}
@@ -49,15 +52,27 @@ ADD_PATHSPEC=${ADD_PATHSPEC:-}
 export SPRINT_SCRIPT=`realpath ${0}`
 export SPRINT_DIRECTORY=`dirname ${SPRINT_SCRIPT}`
 export SPRINT_T0=`date --universal`
+PYTHON=`which python`
+if [ "${?}" -eq "0" ]; then
+export SPRINT_VERSION=`${PYTHON} setup.py --version`
+else
+export SPRINT_VERSION=UNKNOWN
+fi
+
+# exit 0
+
 ## Script Body
 # If DEBUG is not equal to 0.
 if [ "${DEBUG}" -ne "0" ]; then
 # Print off all of the variables.
 echo \${SPRINT_SCRIPT}=${SPRINT_SCRIPT}
 echo \${SPRINT_DIRECTORY}=${SPRINT_DIRECTORY}
+echo \${SPRINT_VERSION}=${SPRINT_VERSION}
 echo \$COMMIT_TIME=${COMMIT_TIME}
 echo \$ADD_PATHSPEC=${ADD_PATHSPEC}
 echo \$GIT_BIN=${GIT_BIN}
+echo \$DEBUG=${DEBUG}
+
 exit 0
 fi
 # The boring stuff of git, automated.
