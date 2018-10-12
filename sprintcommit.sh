@@ -41,11 +41,16 @@ DEBUG=${DEBUG:-0}
 # Binary to use for git.
 #  Use 'echo git' to debug.
 #     export GIT_BIN=`echo git'
-#
+#     setenv GIT_BIN 'echo git'
 GIT_BIN=${GIT_BIN:-git}
+
 # Print off variables and exit.
 DEBUG=${DEBUG:-0}
+
 # Files to add to git during development.
+#
+#
+#
 ADD_PATHSPEC=${ADD_PATHSPEC:-}
 
 ## Ground Truth Variables
