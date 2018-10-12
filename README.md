@@ -1,5 +1,17 @@
 # sprintcommit
 
+```
+DEBUG=1 ./sprintcommit.sh
+```
+
+```
+DEBUG=0 GIT_BIN='echo git' ./sprintcommit.sh
+```
+
+```
+DEBUG=0 GIT_BIN='echo git' ./sprintcommit.sh 10
+```
+
 # Usage
 
 ### As Submodule
