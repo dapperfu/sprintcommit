@@ -36,7 +36,7 @@
 
 ### Variables
 ##
-COMMIT_TIME=${1:-0}
+COMMIT_TIME=${1:-300}
 
 ## Configurable Variables
 # Binary to use for git.
