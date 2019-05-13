@@ -2,7 +2,7 @@
 # sprintcommit.sh [COMMIT_TIME]
 #  Arguments:
 #     COMMIT_TIME: Time (s) to sleep between commits.
-#        Default: 0
+#        Default: 300s (5 minutes)
 #        If the value is zero (0) sprintcommit.sh runs once and exits.
 #
 #  A tool for commiting code changes during 'in the zone' development sprints.
